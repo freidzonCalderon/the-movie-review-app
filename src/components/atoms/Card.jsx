@@ -10,14 +10,14 @@ const Card = () => {
 		setIsFavorite(!isFavorite);
 	};
 	return (
-		<div className="card w-72 h-100">
+		<div className="card w-72 h-100 shadow-md transform hover:scale-105 cursor-pointer">
 			<img
 				src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg"
 				className="card-img-top"
 				alt="movie-poster"
 			/>
 			<div className="card-body">
-				<h5 className="card-title">Title</h5>
+				<h5 className="card-title font-semibold">Title</h5>
 				<p className="card-text">Date</p>
 			</div>
 
