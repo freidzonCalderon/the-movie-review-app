@@ -3,7 +3,6 @@ import Home from "./components/pages/Home";
 import SignUpPage from "./components/pages/SignUpPage";
 import Trending from "./components/pages/Trending";
 import Favorites from "./components/pages/Favorites";
-import Profile from "./components/pages/Profile";
 import ProtectedRoute from "./components/templates/ProtectedRoute";
 import LoginPage from "./components/pages/LoginPage";
 
@@ -25,7 +24,6 @@ function App() {
 
 					<Route path="/trending" element={<Trending />} />
 					<Route path="/favorites" element={<Favorites />} />
-					<Route path="/profile" element={<Profile />} />
 				</Routes>
 			</Router>
 		</div>

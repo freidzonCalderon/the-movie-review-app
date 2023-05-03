@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const MenuNavigation = () => {
@@ -22,10 +22,11 @@ const MenuNavigation = () => {
 						Trending
 					</Link>
 				</Nav>
+
 				<Nav>
-					<Link to="/profile" className="nav-link">
-						Profile
-					</Link>
+					<NavDropdown title="freidzon@dommi.com" id="basic-nav-dropdown">
+						<NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+					</NavDropdown>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
