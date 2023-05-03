@@ -1,8 +1,22 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 
 const MenuNavigation = () => {
+	const { user, logOut } = UserAuth();
+	const navigate = useNavigate();
+
+	const handleLogOut = async () => {
+		try {
+			await logOut().then(() => {
+				navigate("/");
+			});
+		} catch (e) {
+			console.error(e.message);
+		}
+	};
 	return (
 		<Navbar bg="dark" variant="dark" expand="lg" className="p-3">
 			<Link to="/home" className="navbar-brand">
@@ -24,8 +38,8 @@ const MenuNavigation = () => {
 				</Nav>
 
 				<Nav>
-					<NavDropdown title="freidzon@dommi.com" id="basic-nav-dropdown">
-						<NavDropdown.Item href="/">Log Out</NavDropdown.Item>
+					<NavDropdown title={user && user.email} id="basic-nav-dropdown">
+						<NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
 			</Navbar.Collapse>

@@ -8,7 +8,7 @@ const Home = () => {
 			<MenuNavigation />
 			<div className="container">
 				<h1 className="text-center mb-5 mt-5">Movies</h1>
-				<ul className="list-none flex flex-wrap gap-2">
+				<ul className="list-none flex flex-wrap justify-between gap-4">
 					<li>
 						<Card />
 					</li>
