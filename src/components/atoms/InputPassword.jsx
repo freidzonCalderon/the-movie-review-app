@@ -1,9 +1,9 @@
 import React from "react";
 
-const InputPassword = () => {
+const InputPassword = ({ inputLabel }) => {
 	return (
 		<div className="mb-3">
-			<label htmlFor="inputPassword">Password</label>
+			<label htmlFor="inputPassword">{inputLabel}</label>
 			<input
 				type="password"
 				name="password"

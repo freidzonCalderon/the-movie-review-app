@@ -10,14 +10,14 @@ import { Link, useNavigate } from "react-router-dom";
 const LoginPage = () => {
 	return (
 		<div className="h-screen flex items-center bg-[#FAFAFA]">
-			<div className="card p-5 mx-auto shadow-lg col-11 col-md-6 col-lg-4">
+			<div className="card p-5 mx-auto shadow-lg col-11 col-md-6 col-lg-3">
 				<h1 className="text-center display-2">Log In</h1>
 				<Formik>
 					{() => (
 						<form>
 							<InputEmail />
-							<InputPassword />
-							<Button />
+							<InputPassword inputLabel="Password" />
+							<Button buttonText="Log In" />
 							<div>
 								<p className="text-center mt-3">
 									Dont have an account?

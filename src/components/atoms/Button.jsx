@@ -1,10 +1,10 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({ buttonText }) => {
 	return (
 		<div>
 			<button type="submit" className="btn btn-dark container-fluid">
-				LogIn
+				{buttonText}
 			</button>
 		</div>
 	);
