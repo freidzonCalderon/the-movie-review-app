@@ -1,9 +1,10 @@
 import React from "react";
+import MenuNavigation from "../atoms/MenuNavigation";
 
 const Home = () => {
 	return (
 		<div>
-			<h2>Home</h2>
+			<MenuNavigation />
 		</div>
 	);
 };
