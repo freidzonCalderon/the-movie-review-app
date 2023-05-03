@@ -7,14 +7,15 @@ const InputPassword = ({
 	handleBlur,
 	errors,
 	touched,
+	passwordName,
 }) => {
 	return (
 		<div className="mb-3">
 			<label htmlFor="inputPassword">{inputLabel}</label>
 			<input
 				type="password"
-				name="password"
-				id="inputPassword"
+				name={passwordName}
+				id={passwordName}
 				placeholder="*******"
 				className={`form-control ${
 					touched.password && errors.password ? "border border-danger" : ""

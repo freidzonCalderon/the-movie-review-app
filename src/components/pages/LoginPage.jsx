@@ -6,7 +6,7 @@ import Button from "./../atoms/Button";
 
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
-import AlertPasswordMissmatch from "./../templates/AlertPasswordMissmatch";
+import AlertsMismatch from "./../templates/AlertsMismatch";
 
 const LoginPage = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -16,7 +16,12 @@ const LoginPage = () => {
 
 	return (
 		<div className="h-screen flex items-center bg-[#FAFAFA]">
-			{showModal && <AlertPasswordMissmatch setShowModal={setShowModal} />}
+			{showModal && (
+				<AlertsMismatch
+					setShowModal={setShowModal}
+					messageAlert="Email and Password do not match"
+				/>
+			)}
 			<div className="card p-5 mx-auto shadow-lg col-11 col-md-6 col-lg-3">
 				<h1 className="text-center display-2">Log In</h1>
 				<Formik
@@ -74,6 +79,7 @@ const LoginPage = () => {
 							/>
 							<InputPassword
 								inputLabel="Password"
+								passwordName="password"
 								value={values.password}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
