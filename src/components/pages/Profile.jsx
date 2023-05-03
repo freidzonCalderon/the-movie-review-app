@@ -5,7 +5,9 @@ const Profile = () => {
 	return (
 		<div>
 			<MenuNavigation />
-			<h2>Profile</h2>
+			<div className="container">
+				<h1 className="text-center mb-5 mt-5">Profile</h1>
+			</div>
 		</div>
 	);
 };

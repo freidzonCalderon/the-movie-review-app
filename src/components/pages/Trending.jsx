@@ -5,7 +5,9 @@ const Trending = () => {
 	return (
 		<div>
 			<MenuNavigation />
-			<h2>Trending</h2>
+			<div className="container">
+				<h1 className="text-center mb-5 mt-5">Trending Movies</h1>
+			</div>
 		</div>
 	);
 };
