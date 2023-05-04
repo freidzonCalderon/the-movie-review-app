@@ -61,8 +61,6 @@ const Favorites = () => {
 		}
 	}, [favMovies]);
 
-	console.log(movies);
-
 	return (
 		<div>
 			<MenuNavigation />

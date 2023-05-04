@@ -27,7 +27,7 @@ const Card = ({
 		} catch (error) {
 			console.error("Error adding/updating movie to Firestore: ", error);
 		} finally {
-			setIsRemoving(false); // set isRemoving state to false
+			setIsRemoving(false); 
 		}
 	};
 
