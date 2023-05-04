@@ -1,27 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Rating from "react-rating-stars-component";
 import AddToFavoriteButton from "./AddToFavoriteButton";
 import RemoveFromFavoriteButton from "./RemoveFromFavoriteButton";
+import { addMovieToDB, getInfoFromDb } from "../../Firebase/dataBaseActions";
 
 const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 	const [isFavorite, setIsFavorite] = useState(false);
+	const [rating, setRating] = useState(0);
 
-	// const handleAddingMovieToDB = (movie) => {
-	// 	return addMovieToDB(user.uid, movie.movieId, 0, false);
-	// };
-
-	// const handleToggleFavorite = async () => {
-	// 	try {
-	// 		setIsFavorite(!isFavorite);
-	// 		await handleAddingMovieToDB(userId, movieId, 3, isFavorite);
-	// 	} catch (error) {
-	// 		console.error("Error adding movie to Firestore: ", error);
-	// 	}
-	// };
-
-	const handleToggleFavorite = () => {
+	const handleToggleFavorite = async () => {
 		setIsFavorite(!isFavorite);
+		try {
+			await addMovieToDB(userId, movieId, rating, !isFavorite);
+			console.log("Movie added/updated to Firestore successfully");
+		} catch (error) {
+			console.error("Error adding/updating movie to Firestore: ", error);
+		}
 	};
+
+	const handleRatingChange = async (newRating) => {
+		setRating(newRating);
+		try {
+			await addMovieToDB(userId, movieId, newRating, isFavorite);
+			console.log("Movie added/updated to Firestore successfully");
+		} catch (error) {
+			console.error("Error adding/updating movie to Firestore: ", error);
+		}
+	};
+
+	useEffect(() => {
+		if (!userId || !movieId) return;
+		getInfoFromDb(userId, movieId).then((data) => {
+			console.log(data);
+			if (data) {
+				setIsFavorite(data[0].isFavorite);
+				setRating(data[0].movieRating);
+			}
+		});
+	}, [userId, movieId]);
 
 	return (
 		<div className="card w-72 h-100 shadow-md transform hover:scale-105 cursor-pointer">
@@ -41,7 +57,12 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 				<AddToFavoriteButton handleToggleFavorite={handleToggleFavorite} />
 			)}
 
-			<Rating size={24} activeColor="#ffd700" />
+			<Rating
+				size={24}
+				activeColor="#ffd700"
+				onChange={handleRatingChange}
+				value={rating}
+			/>
 		</div>
 	);
 };

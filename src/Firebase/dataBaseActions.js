@@ -35,3 +35,25 @@ export const addMovieToDB = async (userId, movieId, rating, isFav) => {
 		console.error("Error adding movies to Firestore: ", error);
 	}
 };
+
+export const getInfoFromDb = async (userId, movieId) => {
+	try {
+		const parentDocRef = doc(db, "MoviesDB", userId.toString());
+
+		const subcollectionRef = collection(parentDocRef, "movies");
+		const q = query(subcollectionRef, where("movieId", "==", movieId));
+		const querySnapshot = await getDocs(q);
+		return querySnapshot.docs.map((doc) => {
+			const data = doc.data();
+
+			// console.log(`User ID is: ${data.userID}`);
+			// console.log(`Movie ID is: ${data.movieId}`);
+			// console.log(`Data rating is: ${data.movieRating}`);
+			// console.log(`Data isFavorite is: ${data.isFavorite}`);
+			return data;
+		});
+	} catch (error) {
+		console.error("Error fetching data from database: ", error);
+		return [];
+	}
+};
