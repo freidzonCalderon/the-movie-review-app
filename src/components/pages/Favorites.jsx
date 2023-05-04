@@ -8,7 +8,6 @@ import Card from "../atoms/Card";
 const Favorites = () => {
 	const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 	const { user } = UserAuth();
-	const userId = user.uid;
 
 	const [movies, setMovies] = useState([
 		{
@@ -21,8 +20,6 @@ const Favorites = () => {
 		},
 	]);
 	const [favMovies, setFavMovies] = useState([]);
-	const [isFavorite, setIsFavorite] = useState(false);
-	const [rating, setRating] = useState(0);
 
 	useEffect(() => {
 		if (!user.uid) return;
@@ -59,8 +56,6 @@ const Favorites = () => {
 			fetchMovies();
 		}
 	}, [favMovies]);
-
-	console.log(movies);
 
 	return (
 		<div>

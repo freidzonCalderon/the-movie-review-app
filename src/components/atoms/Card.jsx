@@ -32,7 +32,6 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 	useEffect(() => {
 		if (!userId || !movieId) return;
 		getInfoFromDb(userId, movieId).then((data) => {
-			console.log(data);
 			if (data && data.length > 0) {
 				setIsFavorite(data[0].isFavorite);
 				setRating(data[0].movieRating);
