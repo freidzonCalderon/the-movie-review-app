@@ -53,7 +53,9 @@ const Home = () => {
 							);
 						})
 					) : (
-						<h1>No movies saved as favorites</h1>
+						<h1 className="container text-center mb-5 mt-5 display-1">
+							No movies to display
+						</h1>
 					)}
 				</ul>
 			</div>
