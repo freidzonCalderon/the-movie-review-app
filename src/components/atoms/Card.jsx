@@ -21,6 +21,7 @@ const Card = ({
 			setIsFavorite((prevState) => !prevState);
 			await addMovieToDB(userId, movieId, rating, newIsFavorite);
 			if (reFetchMovies) reFetchMovies();
+			if (!newIsFavorite) reFetchMovies(); // Remove movie from UI if it's no longer a favorite
 			console.log("Movie added/updated to Firestore successfully");
 		} catch (error) {
 			console.error("Error adding/updating movie to Firestore: ", error);

@@ -12,12 +12,21 @@ const Favorites = () => {
 	const [movies, setMovies] = useState([]);
 	const [favMovies, setFavMovies] = useState([]);
 
-	const fetchMoviesFromDb = () => {
-		getFavsFromDb(user.uid).then((data) => {
+	const fetchMoviesFromDb = async () => {
+		try {
+			const data = await getFavsFromDb(user.uid);
 			if (data) {
 				setFavMovies(data);
 			}
-		});
+
+			setMovies((prevMovies) => {
+				return prevMovies.filter((movie) => {
+					return data.some((favMovie) => favMovie.movieId === movie.movieId);
+				});
+			});
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
