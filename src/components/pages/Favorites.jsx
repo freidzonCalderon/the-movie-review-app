@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import MenuNavigation from "../atoms/MenuNavigation";
-import { Card } from "react-bootstrap";
 import { getFavsFromDb } from "../../Firebase/dataBaseActions";
 import { UserAuth } from "../../context/AuthContext";
 import axios from "axios";
+import Card from "../atoms/Card";
 
 const Favorites = () => {
 	const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 	const { user } = UserAuth();
+	const userId = user.uid;
+
 	const [movies, setMovies] = useState([
 		{
 			movieTitle: "",
 			movieId: "",
 			movieDate: "",
 			moviePoster: "",
+			movieRating: "",
+			isFavorite: "",
 		},
 	]);
 	const [favMovies, setFavMovies] = useState([]);
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [rating, setRating] = useState(0);
+
+	useEffect(() => {
+		if (!user.uid) return;
+		getFavsFromDb(user.uid).then((data) => {
+			if (data) {
+				setFavMovies(data);
+			}
+		});
+	}, [user.uid]);
 
 	useEffect(() => {
 		const fetchMovies = async () => {
@@ -32,6 +45,8 @@ const Favorites = () => {
 						movieId: response.data.id,
 						movieDate: response.data.release_date,
 						moviePoster: response.data.poster_path,
+						movieRating: movie.movieRating,
+						isFavorite: movie.isFavorite,
 					};
 				});
 				const movieInfo = await Promise.all(movieInfoRequests);
@@ -45,34 +60,25 @@ const Favorites = () => {
 		}
 	}, [favMovies]);
 
-	useEffect(() => {
-		if (!user.uid) return;
-		getFavsFromDb(user.uid).then((data) => {
-			console.log(data);
-			if (data) {
-				setFavMovies(data);
-			}
-		});
-	}, [user.uid]);
+	console.log(movies);
+
 	return (
 		<div>
 			<MenuNavigation />
 			<div className="container">
 				<h1 className="text-center mb-5 mt-5">Favorites</h1>
 				<ul className="list-none flex flex-wrap justify-between gap-4">
-					{movies.map((movie) => {
-						return (
-							<li key={movie.movieId}>
-								<Card
-									posterPath={movie.moviePoster}
-									title={movie.movieTitle}
-									releaseDate={movie.movieDate}
-									userId={user.uid}
-									movieId={movie.movieId}
-								/>
-							</li>
-						);
-					})}
+					{movies.map((movie) => (
+						<li key={movie.movieId}>
+							<Card
+								posterPath={movie.moviePoster}
+								title={movie.movieTitle}
+								releaseDate={movie.movieDate}
+								userId={user.uid}
+								movieId={movie.movieId}
+							/>
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>

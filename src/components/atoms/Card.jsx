@@ -9,9 +9,10 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 	const [rating, setRating] = useState(0);
 
 	const handleToggleFavorite = async () => {
-		setIsFavorite(!isFavorite);
 		try {
-			await addMovieToDB(userId, movieId, rating, !isFavorite);
+			const newIsFavorite = !isFavorite;
+			setIsFavorite((prevState) => !prevState);
+			await addMovieToDB(userId, movieId, rating, newIsFavorite);
 			console.log("Movie added/updated to Firestore successfully");
 		} catch (error) {
 			console.error("Error adding/updating movie to Firestore: ", error);
@@ -32,7 +33,7 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 		if (!userId || !movieId) return;
 		getInfoFromDb(userId, movieId).then((data) => {
 			console.log(data);
-			if (data) {
+			if (data && data.length > 0) {
 				setIsFavorite(data[0].isFavorite);
 				setRating(data[0].movieRating);
 			}
