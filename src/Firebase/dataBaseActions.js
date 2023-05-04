@@ -6,10 +6,6 @@ import {
 	getDocs,
 	query,
 	where,
-	FieldPath,
-	getDoc,
-	userDocRef,
-	addDoc,
 } from "firebase/firestore";
 
 export const addMovieToDB = async (userId, movieId, rating, isFav) => {

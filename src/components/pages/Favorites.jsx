@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useCallback, useEffect, useState } from "react";
 import MenuNavigation from "../atoms/MenuNavigation";
 import { getFavsFromDb } from "../../Firebase/dataBaseActions";
 import { UserAuth } from "../../context/AuthContext";
@@ -12,7 +13,7 @@ const Favorites = () => {
 	const [movies, setMovies] = useState([]);
 	const [favMovies, setFavMovies] = useState([]);
 
-	const fetchMoviesFromDb = async () => {
+	const fetchMoviesFromDb = useCallback(async () => {
 		try {
 			const data = await getFavsFromDb(user.uid);
 			if (data) {
@@ -27,12 +28,12 @@ const Favorites = () => {
 		} catch (error) {
 			console.error(error);
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		if (!user.uid) return;
 		fetchMoviesFromDb();
-	}, [user.uid]);
+	}, [fetchMoviesFromDb, user.uid]);
 
 	useEffect(() => {
 		const fetchMovies = async () => {
