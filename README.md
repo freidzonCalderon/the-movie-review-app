@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# The Movie Review Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Live Demo Click Here](https://the-movie-review-app.netlify.app/).
 
-## Available Scripts
+This project was the final assignment for the React JS course at UCenfotec, where I demonstrated the practical skills I acquired during my web development journey. I used React JS and Bootstrap to create a user-friendly and responsive application that works flawlessly on any device. Whether you use a laptop, desktop, tablet, or smartphone, you can enjoy the same smooth performance and functionality on all of them. This makes our application universally accessible and appealing. I also used Tailwind, Axios, and Firebase to enhance the design, data fetching, and storage capabilities of the application.
 
-In the project directory, you can run:
+### Technologies used: React JS, Bootstrap, Tailwind, Axios, and Firebase
 
-### `npm start`
+### Description of the Application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It is a movie review website that lets you create your own personal account, as it uses Firebase authentication system; or you could simply log in with your existing account. Once you are logged in, you can browse through a variety of movies and rate them with a 5-star system. You can also add your favorite movies to your personal list and access them anytime. My application is designed to be user-friendly, responsive, and secure.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get started, you can create your own account by clicking on the "Sign Up" button. If you prefer to use pre-built information. Simply use the following data to access the application without creating an account.
 
-### `npm test`
+### User 1
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Email: admin@admin.com
 
-### `npm run build`
+Password: Themoviereviewapp1
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Preview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
