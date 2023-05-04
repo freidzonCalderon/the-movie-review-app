@@ -42,7 +42,7 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 	return (
 		<div className="card w-72 h-100 shadow-md transform hover:scale-105 cursor-pointer">
 			<img
-				src={`https://image.tmdb.org/t/p/w1280/${posterPath}`}
+				src={`https://image.tmdb.org/t/p/w1280${posterPath}`}
 				className="card-img-top"
 				alt="movie-poster"
 			/>
