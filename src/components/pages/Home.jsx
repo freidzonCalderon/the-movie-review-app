@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import MenuNavigation from "../atoms/MenuNavigation";
 import Card from "../atoms/Card";
 import axios from "axios";
 import { UserAuth } from "../../context/AuthContext";
-import { addMovieToDB } from "./../../Firebase/dataBaseActions";
 
 const Home = () => {
 	const apiKey = process.env.REACT_APP_TMDB_API_KEY;

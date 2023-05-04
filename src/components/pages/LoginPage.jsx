@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import { Formik } from "formik";
 import InputEmail from "../atoms/InputEmail";
 import InputPassword from "./../atoms/InputPassword";

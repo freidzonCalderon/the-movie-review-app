@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Formik } from "formik";
 import InputEmail from "../atoms/InputEmail";
@@ -46,7 +48,7 @@ const SignUpPage = () => {
 							errors.password = "Minimun 6 characters";
 						}
 
-						if (values.password != values.password2) {
+						if (values.password !== values.password2) {
 							errors.password = "Passwords must match";
 						}
 

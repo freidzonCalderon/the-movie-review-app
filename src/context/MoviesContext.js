@@ -1,3 +1,4 @@
+/* eslint-disable no-self-compare */
 import React, { createContext, useState } from "react";
 
 // Create a context to store an array of favorite movies
