@@ -9,14 +9,7 @@ const Home = () => {
 	const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 	const { user } = UserAuth();
 
-	const [movies, setMovies] = useState([
-		{
-			movieTitle: "",
-			movieId: "",
-			movieDate: "",
-			moviePoster: "",
-		},
-	]);
+	const [movies, setMovies] = useState([]);
 
 	const fetchMovies = async () => {
 		try {
@@ -45,19 +38,23 @@ const Home = () => {
 			<div className="container">
 				<h1 className="text-center mb-5 mt-5">Movies</h1>
 				<ul className="list-none flex flex-wrap justify-between gap-4">
-					{movies.map((movie) => {
-						return (
-							<li key={movie.movieId}>
-								<Card
-									posterPath={movie.moviePoster}
-									title={movie.movieTitle}
-									releaseDate={movie.movieDate}
-									userId={user.uid}
-									movieId={movie.movieId}
-								/>
-							</li>
-						);
-					})}
+					{movies.length > 0 ? (
+						movies.map((movie) => {
+							return (
+								<li key={movie.movieId}>
+									<Card
+										posterPath={movie.moviePoster}
+										title={movie.movieTitle}
+										releaseDate={movie.movieDate}
+										userId={user.uid}
+										movieId={movie.movieId}
+									/>
+								</li>
+							);
+						})
+					) : (
+						<h1>No movies saved as favorites</h1>
+					)}
 				</ul>
 			</div>
 		</div>

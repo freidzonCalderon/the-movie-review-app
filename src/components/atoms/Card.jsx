@@ -4,7 +4,14 @@ import AddToFavoriteButton from "./AddToFavoriteButton";
 import RemoveFromFavoriteButton from "./RemoveFromFavoriteButton";
 import { addMovieToDB, getInfoFromDb } from "../../Firebase/dataBaseActions";
 
-const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
+const Card = ({
+	posterPath,
+	title,
+	releaseDate,
+	userId,
+	movieId,
+	reFetchMovies,
+}) => {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [rating, setRating] = useState(0);
 
@@ -13,6 +20,7 @@ const Card = ({ posterPath, title, releaseDate, userId, movieId }) => {
 			const newIsFavorite = !isFavorite;
 			setIsFavorite((prevState) => !prevState);
 			await addMovieToDB(userId, movieId, rating, newIsFavorite);
+			if (reFetchMovies) reFetchMovies();
 			console.log("Movie added/updated to Firestore successfully");
 		} catch (error) {
 			console.error("Error adding/updating movie to Firestore: ", error);

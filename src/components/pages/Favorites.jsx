@@ -9,25 +9,20 @@ const Favorites = () => {
 	const apiKey = process.env.REACT_APP_TMDB_API_KEY;
 	const { user } = UserAuth();
 
-	const [movies, setMovies] = useState([
-		{
-			movieTitle: "",
-			movieId: "",
-			movieDate: "",
-			moviePoster: "",
-			movieRating: "",
-			isFavorite: "",
-		},
-	]);
+	const [movies, setMovies] = useState([]);
 	const [favMovies, setFavMovies] = useState([]);
 
-	useEffect(() => {
-		if (!user.uid) return;
+	const fetchMoviesFromDb = () => {
 		getFavsFromDb(user.uid).then((data) => {
 			if (data) {
 				setFavMovies(data);
 			}
 		});
+	};
+
+	useEffect(() => {
+		if (!user.uid) return;
+		fetchMoviesFromDb();
 	}, [user.uid]);
 
 	useEffect(() => {
@@ -57,23 +52,34 @@ const Favorites = () => {
 		}
 	}, [favMovies]);
 
+	console.log(movies);
+
 	return (
 		<div>
 			<MenuNavigation />
 			<div className="container">
 				<h1 className="text-center mb-5 mt-5">Favorites</h1>
 				<ul className="list-none flex flex-wrap justify-between gap-4">
-					{movies.map((movie) => (
-						<li key={movie.movieId}>
-							<Card
-								posterPath={movie.moviePoster}
-								title={movie.movieTitle}
-								releaseDate={movie.movieDate}
-								userId={user.uid}
-								movieId={movie.movieId}
-							/>
-						</li>
-					))}
+					{movies.length > 0 ? (
+						movies.map((movie) => {
+							return (
+								<li key={movie.movieId}>
+									<Card
+										posterPath={movie.moviePoster}
+										title={movie.movieTitle}
+										releaseDate={movie.movieDate}
+										userId={user.uid}
+										movieId={movie.movieId}
+										reFetchMovies={fetchMoviesFromDb}
+									/>
+								</li>
+							);
+						})
+					) : (
+						<h1 className="container text-center mb-5 mt-5 display-1">
+							No movies saved as favorites
+						</h1>
+					)}
 				</ul>
 			</div>
 		</div>
