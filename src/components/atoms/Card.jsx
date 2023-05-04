@@ -14,17 +14,20 @@ const Card = ({
 }) => {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const [rating, setRating] = useState(0);
+	const [isRemoving, setIsRemoving] = useState(false);
 
 	const handleToggleFavorite = async () => {
 		try {
 			const newIsFavorite = !isFavorite;
 			setIsFavorite((prevState) => !prevState);
+			setIsRemoving(true); // set isRemoving state to true
 			await addMovieToDB(userId, movieId, rating, newIsFavorite);
 			if (reFetchMovies) reFetchMovies();
-			if (!newIsFavorite) reFetchMovies(); // Remove movie from UI if it's no longer a favorite
 			console.log("Movie added/updated to Firestore successfully");
 		} catch (error) {
 			console.error("Error adding/updating movie to Firestore: ", error);
+		} finally {
+			setIsRemoving(false); // set isRemoving state to false
 		}
 	};
 
@@ -50,6 +53,16 @@ const Card = ({
 
 	return (
 		<div className="card w-72 h-100 shadow-md transform hover:scale-105 cursor-pointer">
+			{isRemoving && (
+				<div
+					className="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+					style={{ background: "rgba(0, 0, 0, 0.5)" }}
+				>
+					<div className="spinner-border text-light" role="status">
+						<span className="visually-hidden">Loading...</span>
+					</div>
+				</div>
+			)}
 			<img
 				src={`https://image.tmdb.org/t/p/w1280${posterPath}`}
 				className="card-img-top"
