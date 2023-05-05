@@ -21,5 +21,13 @@ Password: Themoviereviewapp1
 
 ### Preview
 
+![image](https://user-images.githubusercontent.com/102637227/236354014-1c912873-b747-4dc0-b884-e4aa736da93e.png)
+![image](https://user-images.githubusercontent.com/102637227/236354036-faa9d7a7-d49b-4b62-8eaf-69e966139cb5.png)
+![image](https://user-images.githubusercontent.com/102637227/236354429-a3da3d51-fd4d-4ef0-8061-1fb00ddc8842.png)
+![image](https://user-images.githubusercontent.com/102637227/236354481-3bcebf78-6b1a-4a7d-90b9-84d568f12a7d.png)
+
+
+
+
 
 
